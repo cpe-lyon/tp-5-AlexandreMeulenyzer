@@ -101,30 +101,19 @@ Dans cet exercice, nous allons aborder le partitionnement LVM, beaucoup plus fle
 
 ```bash
 umount /dev/sdb1
+umount /dev/sdb2
 ```
 
 ### Question 2 : . Supprimez les deux partitions du disque, et créez une patition unique de type LVM
 
 
 LVM :
-
-
-* appuyer sur n pour créé une nouvelle partition
-
-* appuyer sur p pour créer une partition primaire (4max)
-
-* appuyer sur 1 pour denote it as 1st disk partition
-
-* appuyer sur t pour changer le type de partition par défaut Linux (0x83) en LVM partition (0x8e),
-
-* appuyer sur L pour lister toutes les types de partitions
-
-* appuyer sur 8e pour changer la partition de 1 à 8e
-
-* appuyer sur p pour afficher le groupe du 2ème disque. 
-  
-* appuyer sur w pour écrire les partitions dans la table.
-
+```bash
+Command (m for help): t
+Selected partition 1
+Hex code or alias (type L to list all): 8e
+Changed type of partition 'Linux' to 'Linux LVM'.
+```
 ### Question 3 : A l’aide de la commande pvcreate, créez un volume physique LVM. Validez qu’il est bien créé, en utilisant la commande pvdisplay.
 
 pvcreate :
