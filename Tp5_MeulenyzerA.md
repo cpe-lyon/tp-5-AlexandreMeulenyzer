@@ -207,7 +207,26 @@ root@serveur:/home/User# lvrename vg00 lvol0 lvdata
   Renamed "lvol0" to "lvdata" in volume group "vg00"
 ```
 
+### Question 6 :
+```bash
+root@serveur:/home/User# fdisk /dev/vg00/lvdata 
 
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-10477567, default 2048): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-10477567, default 10477567): 
+
+Created a new partition 1 of type 'Linux' and of size 5 GiB.
+
+Command (m for help): t
+Selected partition 1
+Hex code or alias (type L to list all): 83
+Changed type of partition 'Empty' to 'Linux'.
+```
 ### Question 7 : Eteignez la VM pour ajouter un second disque (peu importe la taille pour cet exercice). Redémarrez la VM, vérifiez que le disque est bien présent. Puis, répétez les questions 2 et 3 sur ce nouveau disque
 
 Le disque ajouté est bien visible, donc nous procédons suppression des deux partitions du disque, et la création une patition unique de type LVM, puis du formatage LVM
