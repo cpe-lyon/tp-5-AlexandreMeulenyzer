@@ -149,8 +149,6 @@ pvcreate :
 ```
 ### Question 4 : A l’aide de la commande vgcreate, créez un groupe de volumes, qui pour l’instant ne contiendra que le volume physique créé à l’étape précédente Vérifiez à l’aide de la commande vgdisplay. 
 
-
- vgcreateetvgdisplay :
 ```bash
 
 [10:12]-[root]@client-/home/User: vgcreate vg00 /dev/sdb1
