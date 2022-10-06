@@ -283,61 +283,16 @@ root@serveur:/home/User# vgextend vg00 /dev/sdc1
 ### Question 9 : Utilisez la commande lvresize (ou lvextend) pour agrandir le volume logique. Enfin, il ne faut pas oublier de redimensionner le système de fichiers à l’aide de la commande resize2fs.
 
 ```bash
-lvextend -L +2.9G /dev/mapper/vg00-lvdata
-resize2fs  /dev/mapper/vg00-lvdata
-```
-```bash
-[10:43]-[root]@client-/home/User: lvdisplay
-  --- Logical volume ---
-  LV Path                /dev/vg00/lvdata
-  LV Name                lvdata
-  VG Name                vg00
-  LV UUID                yiyQbF-ju9q-YraK-xtnj-osF0-cIp0-4u45i4
-  LV Write Access        read/write
-  LV Status              available
-  # open                 1
-  LV Size                <7,90 GiB
-  Current LE             2022
-  Segments               2
-  Allocation             inherit
-  Read ahead sectors     auto
-  - currently set to     256
-  Block device           253:0
+root@serveur:/home/User# lvextend -L +1.5G /dev/mapper/vg00-lvdata 
+  Size of logical volume vg00/lvdata changed from <5.00 GiB (1279 extents) to <6.50 GiB (1663 extents).
+  Logical volume vg00/lvdata successfully resized.
+root@serveur:/home/User# resize
+resize2fs   resizecons  resizepart  
+root@serveur:/home/User# resize2fs /dev/mapper/vg00-lvdata 
+resize2fs 1.46.5 (30-Dec-2021)
+Filesystem at /dev/mapper/vg00-lvdata is mounted on /data; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 1
+The filesystem on /dev/mapper/vg00-lvdata is now 1702912 (4k) blocks long.
 
-lvextend -L +2.9G /dev/mapper/vg00-lvdata
-
-resize2fs  /dev/mapper/vg00-lvdata
-
-[10:43]-[root]@client-/home/User: lvdisplay
-
-  --- Logical volume ---
-
-  LV Path                /dev/vg00/lvdata
-
-  LV Name                lvdata
-
-  VG Name                vg00
-
-  LV UUID                yiyQbF-ju9q-YraK-xtnj-osF0-cIp0-4u45i4
-
-  LV Write Access        read/write
-
-  LV Status              available
-
-  # open                 1
-
-  LV Size                <7,90 GiB
-
-  Current LE             2022
-
-  Segments               2
-
-  Allocation             inherit
-
-  Read ahead sectors     auto
-
-  - currently set to     256
-
-  Block device           253:0
-
+root@serveur:/home/User# 
 ```
