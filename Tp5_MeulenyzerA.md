@@ -10,15 +10,15 @@ commande : fdisk -l
 
 Vérification :
 ```bash
-1
+
 Disk /dev/sdb: 5 GiB, 5368709120 bytes, 10485760 sectors
-2
+
 Disk model: Virtual disk
-3
+
 Units: sectors of 1 * 512 = 512 bytes
-4
+
 Sector size (logical/physical): 512 bytes / 512 bytes
-5
+
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 
 ```
