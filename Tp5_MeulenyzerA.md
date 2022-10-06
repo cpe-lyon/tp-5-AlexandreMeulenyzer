@@ -276,7 +276,8 @@ root@serveur:/home/User# pvdisplay /dev/sdc1
 
 Voici la commande entrée :
 ```bash
-vgextend vg00 /dev/sdc
+root@serveur:/home/User# vgextend vg00 /dev/sdc1
+  Volume group "vg00" successfully extended
 ```
 
 ### Question 9 : Utilisez la commande lvresize (ou lvextend) pour agrandir le volume logique. Enfin, il ne faut pas oublier de redimensionner le système de fichiers à l’aide de la commande resize2fs.
