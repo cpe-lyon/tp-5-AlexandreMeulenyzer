@@ -52,16 +52,12 @@ Last sector, +/-sectors or +/-size{K,M,G,T,P} (4196352-10485759, default 1048575
 
 Created a new partition 2 of type 'Linux' and of size 3 GiB.
 
-mkfs.ntfs -f /dev/sdb2
-
-mkdir /mnt/ntfsvolume
-
-mount /dev/sdb2  /mnt/ntfsvolume
 ```
 
 ### Question 4 : A ce stade, les partitions ont été créées, mais elles n’ont pas été formatées avec leur système de fichiers. A l’aide de la commande mkfs, formatez vos deux partitions (! pensez à consulter le manuel !)
 
 mkfs.ext4 /dev/sdb1
+mfks.ntfs /dev/sdb2
 
 ### Question 5 : Pourquoi la commande df -T, qui affiche le type de système de fichier des partitions, ne fonctionne-telle pas sur notre disque ?
 
@@ -72,15 +68,8 @@ La commande df -T ne fonctionne pas car nos partitions ne sont pas montées.
 
 ```bash
 
-mkdir /data
-
-[09:52]-[root]@client-/home/User: mkdir /win
-
-[09:52]-[root]@client-/home/User: umount /dev/sdb2
-
-[09:52]-[root]@client-/home/User: mount /dev/sdb2 /win
-
-[09:52]-[root]@client-/home/User: mount /dev/sdb1 /data
+root@serveur:/home/User# mount /dev/sdb2 /win/
+root@serveur:/home/User# mount /dev/sdb1 /data/
 ```
 Pour que les fichiers soient montés automatiquement au démarrage : il faut modifier le fichier /etc/fstab
 
