@@ -215,7 +215,7 @@ pvcreate :
 
 ```
 ### Question 5 : Créez un volume logique appelé lvData occupant l’intégralité de l’espace disque disponible.
-On peut renseigner la taille d’un volume logique soit de manière absolue avec l’option -L (par exemple -L 10G pour créer un volume de 10 Gio), soit de manière relative avec l’option -l : -l 60%VG pour utiliser 60% de l’espace total du groupe de volumes, ou encore -l 100%FREE pour utiliser la totalité de l’espace libre.
+
 
 Création du volume :
 ```bash
@@ -243,7 +243,6 @@ vgextend vg00 /dev/sdc
 
 ### Question 9 : Utilisez la commande lvresize (ou lvextend) pour agrandir le volume logique. Enfin, il ne faut pas oublier de redimensionner le système de fichiers à l’aide de la commande resize2fs. Il est possible d’aller beaucoup plus loin avec LVM, par exemple en créant des volumes par bandes (l’équivalent du RAID 0) ou du mirroring (RAID 1). Le but de cet exercice n’était que de présenter les fonctionnalités de base
 
-Il faut entrer les commandes dans l'ordre suivant :
 ```bash
 lvextend -L +2.9G /dev/mapper/vg00-lvdata
 resize2fs  /dev/mapper/vg00-lvdata
