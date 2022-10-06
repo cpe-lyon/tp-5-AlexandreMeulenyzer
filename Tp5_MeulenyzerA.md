@@ -201,13 +201,10 @@ root@serveur:/home/User# vgdisplay
 Création du volume :
 ```bash
 
-lvcreate -l 100%FREE vg00
-
-Logical volume "lvol0" created.
-
-lvrename vg00 lvol0 lvdata
-
-Renamed "lvol0" to "lvdata" in volume group "vg00"
+root@serveur:/home/User# lvcreate -l 100%FREE vg00
+  Logical volume "lvol0" created.
+root@serveur:/home/User# lvrename vg00 lvol0 lvdata
+  Renamed "lvol0" to "lvdata" in volume group "vg00"
 ```
 
 
