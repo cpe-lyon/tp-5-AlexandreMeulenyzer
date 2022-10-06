@@ -30,17 +30,27 @@ Partitions en NTFS :
 
 fdisk /dev/sdb
 
-Commands:
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-10485759, default 2048): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-10485759, default 10485759): +2G
 
-to create the partition: n, p, [enter], [enter]
+Created a new partition 1 of type 'Linux' and of size 2 GiB.
 
-to give a type to the partition: t, 7 (dont select 86 or 87, those are for volume sets)
+Command (m for help): n
+Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (2-4, default 2): 2
+First sector (4196352-10485759, default 4196352): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (4196352-10485759, default 10485759): 
 
-if you want to make it bootable: a
-
-to see the changes: p
-
-to write the changes: w
+Created a new partition 2 of type 'Linux' and of size 3 GiB.
 
 mkfs.ntfs -f /dev/sdb2
 
