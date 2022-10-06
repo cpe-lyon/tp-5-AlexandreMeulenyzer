@@ -300,4 +300,5 @@ resize2fs  /dev/mapper/vg00-lvdata
   - currently set to     256
 
   Block device           253:0
+
 ```
