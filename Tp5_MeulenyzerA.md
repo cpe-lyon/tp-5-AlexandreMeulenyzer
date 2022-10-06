@@ -119,82 +119,80 @@ Changed type of partition 'Linux' to 'Linux LVM'.
 pvcreate :
 ```bash
 
-[10:11]-[root]@client-/home/User: pvcreate /dev/sdb1
-
+root@serveur:/home/User# pvcreate /dev/sdb1
   Physical volume "/dev/sdb1" successfully created.
-
-[10:12]-[root]@client-/home/User: pvdisplay
-
-  "/dev/sdb1" is a new physical volume of "<5,00 GiB"
-
+root@serveur:/home/User# pvdisplay 
+  --- Physical volume ---
+  PV Name               /dev/sda3
+  VG Name               sysvg
+  PV Size               <38.00 GiB / not usable 2.00 MiB
+  Allocatable           yes 
+  PE Size               4.00 MiB
+  Total PE              9727
+  Free PE               1279
+  Allocated PE          8448
+  PV UUID               wQIWMI-3vhz-xBTe-TItJ-wtvS-AE3I-3wZGd4
+   
+  "/dev/sdb1" is a new physical volume of "<5.00 GiB"
   --- NEW Physical volume ---
-
   PV Name               /dev/sdb1
-
-  VG Name
-
-  PV Size               <5,00 GiB
-
+  VG Name               
+  PV Size               <5.00 GiB
   Allocatable           NO
-
-  PE Size               0
-
+  PE Size               0   
   Total PE              0
-
   Free PE               0
-
   Allocated PE          0
-
-  PV UUID               V47ZaY-LQ8N-t1MI-zK9H-tUvZ-Gn1m-ElNYiM
+  PV UUID               QLb4g5-QZHx-UYGQ-pTgL-xV4O-t8n5-ickbXt
 ```
 ### Question 4 : A l’aide de la commande vgcreate, créez un groupe de volumes, qui pour l’instant ne contiendra que le volume physique créé à l’étape précédente Vérifiez à l’aide de la commande vgdisplay. 
 
 ```bash
 
-[10:12]-[root]@client-/home/User: vgcreate vg00 /dev/sdb1
-
+root@serveur:/home/User# vgcreate vg00 /dev/sdb1
   Volume group "vg00" successfully created
-
-[10:14]-[root]@client-/home/User: vgdisplay
-
+root@serveur:/home/User# vgdisplay
   --- Volume group ---
-
   VG Name               vg00
-
-  System ID
-
+  System ID             
   Format                lvm2
-
   Metadata Areas        1
-
   Metadata Sequence No  1
-
   VG Access             read/write
-
   VG Status             resizable
-
   MAX LV                0
-
   Cur LV                0
-
   Open LV               0
-
   Max PV                0
-
   Cur PV                1
-
   Act PV                1
-
-  VG Size               <5,00 GiB
-
-  PE Size               4,00 MiB
+  VG Size               <5.00 GiB
+  PE Size               4.00 MiB
   Total PE              1279
-
-  Alloc PE / Size       0 / 0
-
-  Free  PE / Size       1279 / <5,00 GiB
-
-  VG UUID               IRsQ73-4dTc-4aaM-h0Fm-NYfh-n0My-DocV1t
+  Alloc PE / Size       0 / 0   
+  Free  PE / Size       1279 / <5.00 GiB
+  VG UUID               34iXSm-QCl4-Ah5n-ngP3-yAt1-9BLw-i9g2nG
+   
+  --- Volume group ---
+  VG Name               sysvg
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  8
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                7
+  Open LV               7
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               <38.00 GiB
+  PE Size               4.00 MiB
+  Total PE              9727
+  Alloc PE / Size       8448 / 33.00 GiB
+  Free  PE / Size       1279 / <5.00 GiB
+  VG UUID               UC41XH-YKj4-8g4u-MZkc-a1we-7W27-g9xMRV
 
 ```
 ### Question 5 : Créez un volume logique appelé lvData occupant l’intégralité de l’espace disque disponible.
