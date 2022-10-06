@@ -229,8 +229,49 @@ Changed type of partition 'Empty' to 'Linux'.
 ```
 ### Question 7 : Eteignez la VM pour ajouter un second disque (peu importe la taille pour cet exercice). Redémarrez la VM, vérifiez que le disque est bien présent. Puis, répétez les questions 2 et 3 sur ce nouveau disque
 
-Le disque ajouté est bien visible, donc nous procédons suppression des deux partitions du disque, et la création une patition unique de type LVM, puis du formatage LVM
+```bash
+root@serveur:/home/User# fdisk /dev/sdc 
 
+Welcome to fdisk (util-linux 2.37.2).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS disklabel with disk identifier 0x01d3930d.
+
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): 
+
+Using default response p.
+Partition number (1-4, default 1): 
+First sector (2048-4194303, default 2048): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-4194303, default 4194303): 
+
+Created a new partition 1 of type 'Linux' and of size 2 GiB.
+
+Command (m for help): 
+
+Selected partition 1
+Hex code or alias (type L to list all): 8e
+Changed type of partition 'Linux' to 'Linux LVM'.
+```
+```bash
+root@serveur:/home/User# pvdisplay /dev/sdc1
+  "/dev/sdc1" is a new physical volume of "<2.00 GiB"
+  --- NEW Physical volume ---
+  PV Name               /dev/sdc1
+  VG Name               
+  PV Size               <2.00 GiB
+  Allocatable           NO
+  PE Size               0   
+  Total PE              0
+  Free PE               0
+  Allocated PE          0
+  PV UUID               rmViL7-QcJX-xRK7-4iQk-Ak3w-Jtst-slH3mV
+  ```
 ### Question 8 : Utilisez la commande vgextend <nom_vg> <nom_pv> pour ajouter le nouveau disque au groupe de volumes
 
 Voici la commande entrée :
