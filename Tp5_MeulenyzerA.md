@@ -105,8 +105,7 @@ umount /dev/sdb1
 ```
 
 ### Question 2 : . Supprimez les deux partitions du disque, et créez une patition unique de type LVM
-### Astuce : La création d’une partition LVM n’est pas indispensable, mais vivement recommandée quand on utilise LVM sur un disque entier. En effet, elle permet d’indiquer à d’autres OS ou logiciels de gestion de disques (qui ne reconnaissent pas forcément le format LVM) qu’il y a des données sur ce disque.
-### Attention à ne pas supprimer la partition système !
+
 
 LVM :
 
@@ -127,7 +126,7 @@ LVM :
   
 * appuyer sur w pour écrire les partitions dans la table.
 
-### Question 3 : A l’aide de la commande pvcreate, créez un volume physique LVM. Validez qu’il est bien créé, en utilisant la commande pvdisplay. Toutes les commandes concernant les volumes physiques commencent par pv. Celles concernant les groupes de volumes commencent par vg, et celles concernant les volumes logiques par lv.
+### Question 3 : A l’aide de la commande pvcreate, créez un volume physique LVM. Validez qu’il est bien créé, en utilisant la commande pvdisplay.
 
 pvcreate :
 ```bash
@@ -161,7 +160,7 @@ pvcreate :
   PV UUID               V47ZaY-LQ8N-t1MI-zK9H-tUvZ-Gn1m-ElNYiM
 ```
 ### Question 4 : A l’aide de la commande vgcreate, créez un groupe de volumes, qui pour l’instant ne contiendra que le volume physique créé à l’étape précédente Vérifiez à l’aide de la commande vgdisplay. 
-### Par convention, on nomme généralement les groupes de volumes vgxx (où xx représente l’indice du groupe de volume, en commençant par 00, puis 01...)
+
 
  vgcreateetvgdisplay :
 ```bash
@@ -239,7 +238,7 @@ Voici la commande entrée :
 vgextend vg00 /dev/sdc
 ```
 
-### Question 9 : Utilisez la commande lvresize (ou lvextend) pour agrandir le volume logique. Enfin, il ne faut pas oublier de redimensionner le système de fichiers à l’aide de la commande resize2fs. Il est possible d’aller beaucoup plus loin avec LVM, par exemple en créant des volumes par bandes (l’équivalent du RAID 0) ou du mirroring (RAID 1). Le but de cet exercice n’était que de présenter les fonctionnalités de base
+### Question 9 : Utilisez la commande lvresize (ou lvextend) pour agrandir le volume logique. Enfin, il ne faut pas oublier de redimensionner le système de fichiers à l’aide de la commande resize2fs.
 
 ```bash
 lvextend -L +2.9G /dev/mapper/vg00-lvdata
