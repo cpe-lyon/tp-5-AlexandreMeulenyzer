@@ -20,34 +20,32 @@ Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 5
 I/O size (minimum/optimal): 512 bytes / 512 bytes
-Question 3 : Partitionnez ce disque en utilisant fdisk : créez une première partition de 2 Go de type Linux (n°83), et une seconde partition de 3 Go en NTFS (n°7)
-```
 
+```
+### Question 3 : Partitionnez ce disque en utilisant fdisk : créez une première partition de 2 Go de type Linux (n°83), et une seconde partition de 3 Go en NTFS (n°7)
 fdisk /dev/sdb, puis suivre les commande affiché
 Partitions en NTFS :
 
 ```bash
-1
+
 fdisk /dev/sdb
-2
+
 Commands:
-3
-​
-4
+
 to create the partition: n, p, [enter], [enter]
-5
+
 to give a type to the partition: t, 7 (dont select 86 or 87, those are for volume sets)
-6
+
 if you want to make it bootable: a
-7
+
 to see the changes: p
-8
+
 to write the changes: w
-9
+
 mkfs.ntfs -f /dev/sdb2
-10
+
 mkdir /mnt/ntfsvolume
-11
+
 mount /dev/sdb2  /mnt/ntfsvolume
 ```
 
@@ -63,15 +61,15 @@ La commande df -T ne fonctionne pas car nos partitions ne sont pas montées.
 
 
 ```bash
-1
+
 mkdir /data
-2
+
 [09:52]-[root]@client-/home/User: mkdir /win
-3
+
 [09:52]-[root]@client-/home/User: umount /dev/sdb2
-4
+
 [09:52]-[root]@client-/home/User: mount /dev/sdb2 /win
-5
+
 [09:52]-[root]@client-/home/User: mount /dev/sdb1 /data
 ```
 Pour que les fichiers soient montés automatiquement au démarrage : il faut modifier le fichier /etc/fstab
@@ -133,33 +131,33 @@ LVM :
 
 pvcreate :
 ```bash
-1
+
 [10:11]-[root]@client-/home/User: pvcreate /dev/sdb1
-2
+
   Physical volume "/dev/sdb1" successfully created.
-3
+
 [10:12]-[root]@client-/home/User: pvdisplay
-4
+
   "/dev/sdb1" is a new physical volume of "<5,00 GiB"
-5
+
   --- NEW Physical volume ---
-6
+
   PV Name               /dev/sdb1
-7
+
   VG Name
-8
+
   PV Size               <5,00 GiB
-9
+
   Allocatable           NO
-10
+
   PE Size               0
-11
+
   Total PE              0
-12
+
   Free PE               0
-13
+
   Allocated PE          0
-14
+
   PV UUID               V47ZaY-LQ8N-t1MI-zK9H-tUvZ-Gn1m-ElNYiM
 ```
 ### Question 4 : A l’aide de la commande vgcreate, créez un groupe de volumes, qui pour l’instant ne contiendra que le volume physique créé à l’étape précédente Vérifiez à l’aide de la commande vgdisplay. 
