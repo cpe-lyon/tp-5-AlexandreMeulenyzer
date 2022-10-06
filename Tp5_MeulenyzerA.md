@@ -2,7 +2,7 @@
 
 ### Question 1 : Dans l’interface de configuration de votre VM, créez un second disque dur, de 5 Go dynamiquement alloués ; puis démarrez la VM
   
-  Disque créé
+  Ajout de disque : démarrage de la vm, disque bien pris en compte.
 
 ### Question 2 : Vérifiez que ce nouveau disque dur est bien détecté par le système
 
@@ -23,7 +23,7 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 Question 3 : Partitionnez ce disque en utilisant fdisk : créez une première partition de 2 Go de type Linux (n°83), et une seconde partition de 3 Go en NTFS (n°7)
 ```
 
-Pour faire ceci, il faut utiliser la commande : fdisk /dev/"nom du disque" par exemple fdisk /dev/sdb, puis suivre les commande affiché
+fdisk /dev/sdb, puis suivre les commande affiché
 Partitions en NTFS :
 
 ```bash
@@ -53,16 +53,14 @@ mount /dev/sdb2  /mnt/ntfsvolume
 
 ### Question 4 : A ce stade, les partitions ont été créées, mais elles n’ont pas été formatées avec leur système de fichiers. A l’aide de la commande mkfs, formatez vos deux partitions (! pensez à consulter le manuel !)
 
-La partition en NTFS a été formatée à la question précédente, pour ce qui est de celle qui est de type Linux il faut la faire de la manière suivante :
 mkfs.ext4 /dev/sdb1
 
 ### Question 5 : Pourquoi la commande df -T, qui affiche le type de système de fichier des partitions, ne fonctionne-telle pas sur notre disque ?
 
-La commande df -T ne fonctionne pas car nos partitions ne sont pas montées. Il faut absolument avoir un système de fichiers et que la partition / disque soit monté pour que cela fonctionne.
+La commande df -T ne fonctionne pas car nos partitions ne sont pas montées.
 
 ### Question 6 : Faites en sorte que les deux partitions créées soient montées automatiquement au démarrage de la machine, respectivement dans les points de montage /data et /win (vous pourrez vous passer des UUID en raison de l’impossibilité d’effectuer des copier-coller)
 
-Les commandes pour que les deux partitions soient montés sont :
 
 ```bash
 1
@@ -109,8 +107,8 @@ umount /dev/sdb1
 ```
 
 ### Question 2 : . Supprimez les deux partitions du disque, et créez une patition unique de type LVM
-Astuce : La création d’une partition LVM n’est pas indispensable, mais vivement recommandée quand on utilise LVM sur un disque entier. En effet, elle permet d’indiquer à d’autres OS ou logiciels de gestion de disques (qui ne reconnaissent pas forcément le format LVM) qu’il y a des données sur ce disque.
-Attention à ne pas supprimer la partition système !
+### Astuce : La création d’une partition LVM n’est pas indispensable, mais vivement recommandée quand on utilise LVM sur un disque entier. En effet, elle permet d’indiquer à d’autres OS ou logiciels de gestion de disques (qui ne reconnaissent pas forcément le format LVM) qu’il y a des données sur ce disque.
+### Attention à ne pas supprimer la partition système !
 
 LVM :
 
